@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset='utf-8'>
+	<title>Elecciones | {% block titulo %}Inicio{% endblock %}</title>
+<body>
+	<div style="float:left;clear:none;width:30%;">
+			<h1>Elecciones</h1>
+			{% if  user.is_authenticated %}
+				<h3> Usuario: <u>{{user.username}}</u></h3>
+			{% endif %}
+			{% if not user.is_authenticated %}
+			    <a href="/login">Entrar</a>
+			{% endif %}
+		 
+			{% if user.is_authenticated %}
+			   	<a href="/logout">Salir</a>
+			{% endif %}
+		
+		<h3>Circunscripciones</h3>
+			<ul>
+				<li><a href ="/eleccion/verCir">Ver circunscripciones</a></li>
+			
+
+				{% if user.is_authenticated %}
+					<li><a href ="/eleccion/addCir">Añadir circunscripcion</a></li>
+				{% endif %}
+				
+			</ul>
+
+		{% if user.is_authenticated %}
+		<h3>Mesas</h3>
+
+		
+				<ul>	
+					<li><a href ="/eleccion/addMesa">Añadir mesa</a></li>
+				</ul>
+					
+		
+
+		<h3>Resultados</h3>
+
+		
+				<ul>	
+					
+					<li><a href ="/eleccion/addResultado">Añadir resultado</a></li>
+				</ul>
+					
+		{% endif %}
+		
+	</div>
+
+	<div style="float:right;clear:none;width:70%;">
+		{% block content %}
+			<h2>Bienvenido</h2>
+		{% endblock %}
+	</div>
+	
+</body>		
+</html>

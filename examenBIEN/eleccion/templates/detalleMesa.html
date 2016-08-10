@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block titulo %}{{titulo}}{% endblock %}
+{% block content %}
+
+		<h1>{{titulo}}</h1>
+		<ul>
+			
+			{% if mesa %}
+			
+
+			<li>{{mesa.nombre}}
+				<ul>
+						<a href =/eleccion/editarMesa/{{mesa.id}}> Editar mesa
+				
+				</ul>
+			</li>
+			
+			{% endif %}
+
+		</ul>
+{% endblock %}

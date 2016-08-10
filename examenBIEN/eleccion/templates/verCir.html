@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block titulo %}{{titulo}}{% endblock %}
+{% block content %}
+<h1>{{titulo}}</h1>
+		{% if cir %}
+		<ul>
+			{% for x in cir %}
+				<a href =/eleccion/detalleCir/{{x.id}}> <li> {{x.nombre}} </li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<h3> No hay cirncuscripciones introducidas. </h3>
+		{% endif %}
+{% endblock %}
