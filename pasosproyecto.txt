@@ -1,0 +1,24 @@
+import django
+print(django.get_version())
+
+django-admin startproject paginavideo
+
+python manage.py startapp videos
+
+Añadimos la aplicacion al settings.py
+
+
+python manage.py migrate			CREAR UN SUPERUSUARIO
+python manage.py createsuperuser
+
+Añadimos:(poner imagenes en web)
+MEDIA_ROOT = '/home/dan/mysite/media/'
+MEDIA_URL = '/media/' con nuestro sitio 
+
+Creamos nuestras clases Video y comentario y hacemos un "python manage.py makemigrations" y despues un "python manage.py migrate"
+
+Modificamos el admin.py para registrar las clases
+
+Entramos en el navegador y metemos comentarios, videos....
+
+
