@@ -1,0 +1,21 @@
+{% extends "esqueleto.html" %}
+
+{% block titulo %} {{titulo}} {% endblock %}
+
+{% block contenido %}
+
+<h1> {{titulo}} </h1>
+<form action="/login/" method="post">
+
+  {% csrf_token %}
+
+  {% for i in formulario %}
+  <label>
+  {{i.label}}
+</label>{{i}}<br>
+  {% endfor %}
+  <input type="submit" value="enviar">
+</form>
+
+
+{% endblock %}

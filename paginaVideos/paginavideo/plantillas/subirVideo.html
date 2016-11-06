@@ -1,0 +1,28 @@
+{% extends "esqueleto.html" %}
+
+{% block titulo %} {{titulo}} {% endblock %}
+
+{% block contenido %}
+
+<h1>{{titulo}}</h1>
+
+{% if booleano %}
+
+{% else %}
+<form action="/subirvideo/" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {% for i in formulario %}
+
+  <label>
+    {{i.label}}
+</label>
+<br>  {{i}}<br><br>
+  {% endfor %}
+  <input type="hidden" name="id_usuario" value="{{user.id}}">
+  <input type="submit" value="Enviar" class="btn btn-default">
+</form>
+{% endif %}
+
+
+{% endblock %}

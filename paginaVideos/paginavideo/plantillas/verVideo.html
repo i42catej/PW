@@ -1,0 +1,51 @@
+{% extends "esqueleto.html" %}
+
+{% block titulo %} {{titulo}} {% endblock %}
+
+{% block contenido %}
+
+<h1>{{video.titulo_video}}</h1>
+<video width="600" src="{{MEDIA_URL}}{{video.archivo_video}}" controls>
+
+</video>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Descripcion</div>
+  <div class="panel-body">
+    {{video.descripcion_video}}
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Keywords</div>
+  <div class="panel-body">
+    {{video.keywords_video}}
+  </div>
+</div>
+{% if user.is_authenticated %}
+
+<h1>Comentarios</h1>
+
+<form action="/ver/{{idvideo}}/" method="post">
+
+{% csrf_token %}
+
+{% for i in formulario %}
+<br><label>{{i.label}}</label><br>{{i}}
+{% endfor %}
+
+<input type="hidden" value="{{user.id}}" name="id_usuario"><br>
+
+<input type="submit" value="Enviar" class="btn btn-default"><br><br>
+</form>
+
+{% endif %}
+
+{% for i in comentarios %}
+<div class="well well-lg">
+  <h4>Comentario de <label>{{i.usuario_comentario}}</label> el d&iacute;a <label>{{i.fecha_comentario|date:"d/m/y"}}</label></h4>
+<p>{{i.texto_comentario}}</p>
+</div>
+{% endfor %}
+
+
+{% endblock %}
